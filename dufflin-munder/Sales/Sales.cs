@@ -6,12 +6,12 @@ namespace dufflin_munder.Sales
 {
     class Sales
     {
-        public string SalesAgent;
-        public string Client;
-        public string ClientID;
-        public double Sale;
-        public string Recurring;
-        public string TimeFrame;
+        public string SalesAgent { get; set; }
+        public string Client { get; set; }
+        public string ClientID { get; set; }
+        public double Sale { get; set; }
+        public string Recurring { get; set; }
+        public string TimeFrame { get; set; }
 
         public Sales(string salesAgent, string client, string clientID, double sale, string recurring, string timeFrame)
         {
@@ -21,6 +21,7 @@ namespace dufflin_munder.Sales
             Sale = sale;
             Recurring = recurring;
             TimeFrame = timeFrame;
+            Console.WriteLine(SalesAgent);
         }
 
     }
