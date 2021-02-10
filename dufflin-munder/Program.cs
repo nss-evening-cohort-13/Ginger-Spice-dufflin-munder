@@ -1,5 +1,6 @@
 ﻿using System;
 using dufflin_munder.Employee;
+using dufflin_munder.Sales;
 
 namespace dufflin_munder
 {
@@ -7,18 +8,33 @@ namespace dufflin_munder
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            //Console.WriteLine(AccountantEmployee.Accountant[0]);
-
-            //Sales Agent: Dwight Hyte
-            //Client: Carol's Pen Pals
-            //ClientID: 2343
-            //Sale: $3412
-            //Recurring: Monthly
-            //Time Frame: 3 months
-
-            //Sales newSale = new Sales("salesAgent","client", "clientID", 1234, "Monthly", "3 months");
             
+            SalesEmployee salesList = new SalesEmployee();
+
+            salesList.listOfSales.Add(new NewSales("salesAgent", "client", "clientID", 1234, "Monthly", "3 months"));
+            
+            foreach (var sale in salesList.listOfSales)
+            {
+                Console.WriteLine(sale.Client);
+            }
+           
+            
+        
+           
+
+
         }
+
+        //void SalesMessage()
+        //{
+            //Console.WriteLine("Sales Agent: ");
+            //Console.WriteLine("Client: "); 
+            //Console.WriteLine("ClientID: "); 
+            //Console.WriteLine("Sale: ");
+            //Console.WriteLine("Recurring: "); 
+            //Console.WriteLine("Time Frame: "); 
+       //}
+
+        
     }
 }
