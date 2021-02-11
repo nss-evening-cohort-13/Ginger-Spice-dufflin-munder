@@ -7,8 +7,10 @@ namespace dufflin_munder
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            Console.WriteLine(AccountantEmployee.Accountant[0]);
+            // Print Sales Employees options to console
+            SalesEmployee.SalesEmployeesOptions();
+            // Determine user selection of Sales Agent and set to property
+            SalesEmployee.SalesEmployeeSelection();
         }
     }
 }
