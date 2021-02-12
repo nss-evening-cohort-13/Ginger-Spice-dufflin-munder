@@ -12,6 +12,7 @@ namespace dufflin_munder
             SalesEmployee salesList = new SalesEmployee();
 
             //Calls menu screen
+            Console.WriteLine("Welcome to Dufflin/Munder Cardboard Co.\nSales Portal \n");
             menuScreen();
 
             //loop variable
@@ -43,7 +44,9 @@ namespace dufflin_munder
                             Console.WriteLine("Generate A Report");
                             break;
                         case "3":
-                            Console.WriteLine("Update employee");
+                            SalesEmployee.AddSalesEmployee();
+                            Console.WriteLine();
+                            menuScreen();
                             break;
                         case "4":
                             Console.WriteLine("New Sale Info");
@@ -77,15 +80,13 @@ namespace dufflin_munder
 
                 salesList.listOfSales.Add(new NewSales(salesAgent, client, clientId, sale, recurring, timeFrame));
 
-                Console.WriteLine("\n\n");
+                Console.WriteLine();
                 menuScreen();
             }
 
             //function that holds the menu screen
             void menuScreen()
             {
-                Console.WriteLine("Welcome to Dufflin/Munder Cardboard Co. ");
-                Console.WriteLine("Sales Portal");
                 Console.WriteLine("1. Enter Sales");
                 Console.WriteLine("2. Generate Report For Accountant");
                 Console.WriteLine("3. Add New Sales Employee");

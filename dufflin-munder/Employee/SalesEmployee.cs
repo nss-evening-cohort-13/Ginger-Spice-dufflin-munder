@@ -44,6 +44,7 @@ namespace dufflin_munder.Employee
             Console.Write("Enter new employee's first and last name: ");
             string newEmployee = Console.ReadLine();
             SalesEmployees.Add(newEmployee);
+            Console.WriteLine($"You have successfully added {newEmployee}! You will now be directed back to the Sales Portal.");
         }
     }
 }
