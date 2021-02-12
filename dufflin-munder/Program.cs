@@ -8,9 +8,7 @@ namespace dufflin_munder
     {
         static void Main(string[] args)
         {
-            //Generate instance of the class with the list
-            SalesEmployee salesList = new SalesEmployee();
-
+            
             //Calls menu screen
             Console.WriteLine("Welcome to Dufflin/Munder Cardboard Co.\nSales Portal \n");
             menuScreen();
@@ -41,7 +39,12 @@ namespace dufflin_munder
                             SalesMessage();
                             break;
                         case "2":
-                            Console.WriteLine("Generate A Report");
+                            // Print Accountant Employees options to console
+                            AccountantEmployee.AccountantEmployeesOptions();
+                            // Determine user selection of Accountant and set to property
+                            AccountantEmployee.AccountantEmployeeSelection();
+                            // Sales report message being called
+                            NewSales.salesReportMessage();
                             break;
                         case "3":
                             SalesEmployee.AddSalesEmployee();
@@ -78,7 +81,7 @@ namespace dufflin_munder
                 Console.Write("Time Frame: ");
                 var timeFrame = Console.ReadLine();
 
-                salesList.listOfSales.Add(new NewSales(salesAgent, client, clientId, sale, recurring, timeFrame));
+                SalesEmployee.listOfSales.Add(new NewSales(salesAgent, client, clientId, sale, recurring, timeFrame));
 
                 Console.WriteLine();
                 menuScreen();
