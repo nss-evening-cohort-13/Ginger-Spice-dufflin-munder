@@ -30,7 +30,7 @@ namespace dufflin_munder
                         Console.WriteLine("Generate A Report");
                         break;
                     case "3":
-                        Console.WriteLine("Update employee");
+                        SalesEmployee.AddSalesEmployee();
                         break;
                     case "4":
                         Console.WriteLine("New Sale Info");

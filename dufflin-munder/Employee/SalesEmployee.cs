@@ -36,5 +36,11 @@ namespace dufflin_munder.Employee
             FirstName = splitName[0];
             Console.WriteLine($"Hi, {FirstName}!");
         }
+        public static void AddSalesEmployee()
+        {
+            Console.Write("Enter new employee's first and last name: ");
+            string newEmployee = Console.ReadLine();
+            SalesEmployees.Add(newEmployee);
+        }
     }
 }
