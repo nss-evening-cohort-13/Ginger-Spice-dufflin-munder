@@ -1,4 +1,5 @@
-﻿using System;
+using dufflin_munder.Sales;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,6 +7,8 @@ namespace dufflin_munder.Employee
 {
     class SalesEmployee : Employee
     {
+           public List<NewSales> listOfSales { get; set; } = new List<NewSales>();
+
         public static List<string> SalesEmployees = new List<string>() { "Dwight Hyte", "Tim Halbert", "Phyllis Leaf" };
         // Store user selection of Sales Agent
         public static string SalesAgentSelection;

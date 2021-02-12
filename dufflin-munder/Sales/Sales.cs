@@ -4,16 +4,16 @@ using System.Text;
 
 namespace dufflin_munder.Sales
 {
-    class Sales
+    class NewSales
     {
         public string SalesAgent { get; set; }
         public string Client { get; set; }
         public string ClientID { get; set; }
-        public double Sale { get; set; }
+        public int Sale { get; set; }
         public string Recurring { get; set; }
         public string TimeFrame { get; set; }
 
-        public Sales(string salesAgent, string client, string clientID, double sale, string recurring, string timeFrame)
+        public NewSales(string salesAgent, string client, string clientID, int sale, string recurring, string timeFrame)
         {
             SalesAgent = salesAgent;
             Client = client;
@@ -21,7 +21,7 @@ namespace dufflin_munder.Sales
             Sale = sale;
             Recurring = recurring;
             TimeFrame = timeFrame;
-            Console.WriteLine(SalesAgent);
+            
         }
 
     }
