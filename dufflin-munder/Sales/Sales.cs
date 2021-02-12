@@ -9,11 +9,11 @@ namespace dufflin_munder.Sales
         public string SalesAgent { get; set; }
         public string Client { get; set; }
         public string ClientID { get; set; }
-        public string Sale { get; set; }
+        public int Sale { get; set; }
         public string Recurring { get; set; }
         public string TimeFrame { get; set; }
 
-        public NewSales(string salesAgent, string client, string clientID, string sale, string recurring, string timeFrame)
+        public NewSales(string salesAgent, string client, string clientID, int sale, string recurring, string timeFrame)
         {
             SalesAgent = salesAgent;
             Client = client;
