@@ -21,7 +21,10 @@ namespace dufflin_munder
                 switch (Console.ReadLine())
                 {
                     case "1":
-                        Console.WriteLine("Which Sales Employee Are You?");
+                        // Print Sales Employees options to console
+                        SalesEmployee.SalesEmployeesOptions();
+                        // Determine user selection of Sales Agent and set to property
+                        SalesEmployee.SalesEmployeeSelection();
                         break;
                     case "2":
                         Console.WriteLine("Generate A Report");
