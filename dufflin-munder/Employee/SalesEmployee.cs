@@ -12,11 +12,12 @@ namespace dufflin_munder.Employee
         public static List<string> SalesEmployees = new List<string>() { "Dwight Hyte", "Tim Halbert", "Phyllis Leaf" };
         // Store user selection of Sales Agent
         public static string SalesAgentSelection;
+        // Store the Sales Agent first name
         public static string FirstName;
 
         public static void SalesEmployeesOptions()
         {
-            Console.WriteLine("Which Sales Employee Are You?");
+            Console.WriteLine("\nWhich Sales Employee Are You?");
             // Use num to number the list of employee options
             int num = 1;
             // Loop through SalesEmployees and print to console
@@ -29,6 +30,7 @@ namespace dufflin_munder.Employee
 
         public static void SalesEmployeeSelection()
         {
+            // Convert userinput to int
             int userinput = Convert.ToInt32(Console.ReadLine());
             // Use user input to determine index of employee in List
             int index = userinput - 1;
@@ -37,14 +39,15 @@ namespace dufflin_munder.Employee
             // Split full name and set first name to variable in order to greet agent
             string[] splitName = SalesAgentSelection.Split(" ");
             FirstName = splitName[0];
-            Console.WriteLine($"Hi, {FirstName}!");
+            Console.WriteLine($"\nHi, {FirstName}!");
         }
         public static void AddSalesEmployee()
         {
-            Console.Write("Enter new employee's first and last name: ");
+            Console.Write("\nEnter new employee's first and last name: ");
             string newEmployee = Console.ReadLine();
+            // Add new employee to list of Sales Employees
             SalesEmployees.Add(newEmployee);
-            Console.WriteLine($"You have successfully added {newEmployee}! You will now be directed back to the Sales Portal.");
+            Console.WriteLine($"\nYou have successfully added {newEmployee}! You will now be directed back to the Sales Portal.");
         }
     }
 }
