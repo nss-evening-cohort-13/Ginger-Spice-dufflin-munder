@@ -19,10 +19,9 @@ namespace dufflin_munder
             //starts the game loop
             menuChoiceLoop();
 
-
-
-
-
+            SalesEmployee.listOfSales.Add(new NewSales("Dwight Hyte", "Angela Martin", "1234", 24, "Monthly", "3 Months"));
+            SalesEmployee.listOfSales.Add(new NewSales("Phyllis Leaf", "Bob Vance", "5656", 60, "Monthly", "5 Months"));
+            SalesEmployee.listOfSales.Add(new NewSales("Andy Bernard", "Angela Martin", "1234", 80, "Monthly", "6 Months"));
 
             //fucntion that holds the loop
             void menuChoiceLoop()
@@ -45,6 +44,7 @@ namespace dufflin_munder
                             AccountantEmployee.AccountantEmployeeSelection();
                             // Sales report message being called
                             NewSales.salesReportMessage();
+                            menuScreen();
                             break;
                         case "3":
                             SalesEmployee.AddSalesEmployee();
