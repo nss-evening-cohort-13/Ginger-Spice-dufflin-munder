@@ -11,11 +11,11 @@ namespace dufflin_munder.Sales
         public string SalesAgent { get; set; }
         public string Client { get; set; }
         public string ClientID { get; set; }
-        public int Sale { get; set; }
+        public decimal Sale { get; set; }
         public string Recurring { get; set; }
         public string TimeFrame { get; set; }
 
-        public NewSales(string salesAgent, string client, string clientID, int sale, string recurring, string timeFrame)
+        public NewSales(string salesAgent, string client, string clientID, decimal sale, string recurring, string timeFrame)
         {
             SalesAgent = salesAgent;
             Client = client;
@@ -37,7 +37,7 @@ namespace dufflin_munder.Sales
             int num = 1;
             int numClient = 1;
             string space = "";
-            int totalSales = 0;
+            decimal totalSales = 0;
             // Loop through SalesEmployees and print to console
             foreach (string employee in SalesEmployee.SalesEmployees)
             {
@@ -55,7 +55,7 @@ namespace dufflin_munder.Sales
                 var salesTotal = from s in SalesEmployee.listOfSales
                                  where s.SalesAgent == employee
                                  select s.Sale;
-                foreach (int sale in salesTotal)
+                foreach (decimal sale in salesTotal)
                     {
                         totalSales = totalSales + sale;
                     }
@@ -67,16 +67,7 @@ namespace dufflin_munder.Sales
                 
                 totalSales = 0;
             }
-
-            //loop over saleslist (list of objects)
-            //In the loop you would check if sale.SaleAgent == employee
-            //foreach (sale in)
-            //array.find(Employee == salesReportMessage.SaleAgent){do the things};
-            //then you would pull the client out
-            //for( sale in salelist) sale.Client;
-            
-            // var clients = for c in clientList
-                          
+                
         }
     }
 }

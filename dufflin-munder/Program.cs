@@ -9,7 +9,14 @@ namespace dufflin_munder
     {
         static void Main(string[] args)
         {
-            
+            //variables
+            var client = string.Empty;
+            var salesAgent = string.Empty;
+            var clientId = string.Empty;
+            decimal sale = 0;
+            var recurring = string.Empty;
+            var timeFrame = string.Empty;
+
             //Calls menu screen
             Console.WriteLine("Welcome to Dufflin/Munder Cardboard Co.\nSales Portal \n");
             menuScreen();
@@ -70,23 +77,109 @@ namespace dufflin_munder
             //function that holds the sales message
             void SalesMessage()
             {
-            Console.WriteLine($"Sales Agent: {SalesEmployee.SalesAgentSelection}");
-                var salesAgent = SalesEmployee.SalesAgentSelection;
+
+                
+                Console.WriteLine($"Sales Agent: {SalesEmployee.SalesAgentSelection}");
+                salesAgent = SalesEmployee.SalesAgentSelection;
                 Console.Write("Client: ");
-                var client = Console.ReadLine();
+                client = Console.ReadLine();
+                checkIfBlank(client);
                 Console.Write("ClientID: ");
-                var clientId = Console.ReadLine();
+                clientId = Console.ReadLine();
+                checkIfBlank(clientId);
                 Console.Write("Sale: $");
-                var sale = Convert.ToInt32(Console.ReadLine());
+                sale = Convert.ToDecimal(Console.ReadLine());
                 Console.Write("Recurring: ");
-                var recurring = Console.ReadLine();
+                recurring = Console.ReadLine();
+                checkIfBlank(recurring);
                 Console.Write("Time Frame: ");
-                var timeFrame = Console.ReadLine();
+                timeFrame = Console.ReadLine();
+                checkIfBlank(timeFrame);
 
                 SalesEmployee.listOfSales.Add(new NewSales(salesAgent, client, clientId, sale, recurring, timeFrame));
 
                 Console.WriteLine();
                 menuScreen();
+            }
+
+            void checkIfBlank(string check)
+            {
+                if (string.IsNullOrEmpty(check) && client == string.Empty)
+                {
+                    //Error message for leaving it blank
+                    Console.WriteLine("-----------------------------");
+                    Console.WriteLine("Error! Client can't be empty!");
+                    Console.WriteLine("-----------------------------\n");
+
+                    //Re-Printing the sales message
+                    Console.WriteLine($"Sales Agent: {SalesEmployee.SalesAgentSelection}");
+                    salesAgent = SalesEmployee.SalesAgentSelection;
+                    Console.Write("Client: ");
+                    client = Console.ReadLine();
+                    checkIfBlank(client);
+                }
+                else if (string.IsNullOrEmpty(check) && clientId == string.Empty)
+                {
+                    //Error message for leaving it blank
+                    Console.WriteLine("-----------------------------");
+                    Console.WriteLine("Error! Client Id can't be empty!");
+                    Console.WriteLine("-----------------------------\n");
+
+                    //Re-Printing the sales message
+                    Console.WriteLine($"Sales Agent: {SalesEmployee.SalesAgentSelection}");
+                    salesAgent = SalesEmployee.SalesAgentSelection;
+                    Console.WriteLine($"Client: {client}");
+                    client = client;
+                    Console.Write("ClientID: ");
+                    clientId = Console.ReadLine();
+                    checkIfBlank(clientId);
+                }
+                else if (string.IsNullOrEmpty(check) && recurring == string.Empty)
+                {
+                    //Error message for leaving it blank
+                    Console.WriteLine("-----------------------------");
+                    Console.WriteLine("Error! Recurring can't be empty!");
+                    Console.WriteLine("-----------------------------\n");
+
+                    //Re-Printing the sales message
+                    Console.WriteLine($"Sales Agent: {SalesEmployee.SalesAgentSelection}");
+                    salesAgent = SalesEmployee.SalesAgentSelection;
+                    Console.WriteLine($"Client: {client}");
+                    client = client;
+                    Console.WriteLine($"ClientID: {clientId}");
+                    clientId = clientId;
+                    Console.WriteLine($"Sale: ${sale}");
+                    sale = sale;
+                    Console.Write("Recurring: ");
+                    recurring = Console.ReadLine();
+                    checkIfBlank(recurring);
+                }
+                else if (string.IsNullOrEmpty(check) && timeFrame == string.Empty)
+                {
+                    //Error message for leaving it blank
+                    Console.WriteLine("-----------------------------");
+                    Console.WriteLine("Error! Time Frame can't be empty!");
+                    Console.WriteLine("-----------------------------\n");
+
+                    //Re-Printing the sales message
+                    Console.WriteLine($"Sales Agent: {SalesEmployee.SalesAgentSelection}");
+                    salesAgent = SalesEmployee.SalesAgentSelection;
+                    Console.WriteLine($"Client: {client}");
+                    client = client;
+                    Console.WriteLine($"ClientID: {clientId}");
+                    clientId = clientId;
+                    Console.WriteLine($"Sale: ${sale}");
+                    sale = sale;
+                    Console.WriteLine($"Recurring: {recurring}");
+                    recurring = recurring;
+                    Console.Write("Time Frame: ");
+                    timeFrame = Console.ReadLine();
+                    checkIfBlank(timeFrame);
+                }
+                else
+                {
+                  
+                }
             }
 
             void findSales()
