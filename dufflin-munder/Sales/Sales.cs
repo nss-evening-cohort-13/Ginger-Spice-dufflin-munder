@@ -28,7 +28,7 @@ namespace dufflin_munder.Sales
 
         public static void salesReportMessage()
         {
-            Console.WriteLine("Monthly Sales Report");
+            Console.WriteLine("\nMonthly Sales Report");
             Console.WriteLine($"For: {AccountantEmployee.AccountantSelection}\n");
 
             //Loop over the Sale's Agents and # them
@@ -42,20 +42,28 @@ namespace dufflin_munder.Sales
             foreach (string employee in SalesEmployee.SalesEmployees)
             {
                 Console.WriteLine($"{num}. {employee}");
+                // Add indentation to the left of the string
                 Console.WriteLine($"{space.PadLeft(3)}Clients:");
+
+                // Loop through objects in listOfSales to find the clients assigned to each Sales Agent
                 var clients = from s in SalesEmployee.listOfSales
                               where s.SalesAgent == employee
                               select s.Client;
+
+                // Loop through the clients to print each client under the assigned Sales Agent
                 foreach (string client in clients)
                 {
-                    
                    Console.WriteLine($"{space.PadLeft(5)} {numClient}. {client}");
                     numClient++;
                 }
+
+                // Loop through objects in listOfSales to pull the Sales for each Sales Agent
                 var salesTotal = from s in SalesEmployee.listOfSales
                                  where s.SalesAgent == employee
                                  select s.Sale;
-                foreach (decimal sale in salesTotal)
+
+                // Loop through each sales and add up the total
+                foreach (int sale in salesTotal)
                     {
                         totalSales = totalSales + sale;
                     }

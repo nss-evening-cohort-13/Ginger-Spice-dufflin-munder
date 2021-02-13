@@ -10,7 +10,7 @@ namespace dufflin_munder.Employee
         public static string AccountantSelection;
         public static void AccountantEmployeesOptions()
         {
-            Console.WriteLine("Which Sales Employee Are You?");
+            Console.WriteLine("\nChoose An Accountant:");
             // Use num to number the list of employee options
             int num = 1;
             // Loop through SalesEmployees and print to console

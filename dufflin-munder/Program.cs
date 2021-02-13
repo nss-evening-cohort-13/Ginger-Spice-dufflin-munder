@@ -9,6 +9,14 @@ namespace dufflin_munder
     {
         static void Main(string[] args)
         {
+            // add data to list of sales for easier testing
+            SalesEmployee.listOfSales.Add(new NewSales("Dwight Hyte", "Angela Martin", "1", 65, "Monthly", "3 Months"));
+            SalesEmployee.listOfSales.Add(new NewSales("Phyllis Leaf", "Bob Vance", "2", 60, "Monthly", "5 Months"));
+            SalesEmployee.listOfSales.Add(new NewSales("Tim Halbert", "Pam B", "3", 80, "Monthly", "6 Months"));
+            SalesEmployee.listOfSales.Add(new NewSales("Dwight Hyte", "Creed Bratton", "4", 24, "Monthly", "3 Months"));
+            SalesEmployee.listOfSales.Add(new NewSales("Phyllis Leaf", "Stanley Hudson", "5", 36, "Monthly", "5 Months"));
+            SalesEmployee.listOfSales.Add(new NewSales("Tim Halbert", "Mose Schrute", "6", 42, "Monthly", "6 Months"));
+
             //variables
             var client = string.Empty;
             var salesAgent = string.Empty;
@@ -27,11 +35,6 @@ namespace dufflin_munder
             //starts the game loop
             menuChoiceLoop();
 
-
-
-
-
-
             //fucntion that holds the loop
             void menuChoiceLoop()
             {
@@ -44,6 +47,7 @@ namespace dufflin_munder
                             SalesEmployee.SalesEmployeesOptions();
                             // Determine user selection of Sales Agent and set to property
                             SalesEmployee.SalesEmployeeSelection();
+                            // Print Sales Message 
                             SalesMessage();
                             break;
                         case "2":
@@ -53,15 +57,17 @@ namespace dufflin_munder
                             AccountantEmployee.AccountantEmployeeSelection();
                             // Sales report message being called
                             NewSales.salesReportMessage();
+                            menuScreen();
                             break;
                         case "3":
+                            // Method to add new Sales Employee
                             SalesEmployee.AddSalesEmployee();
                             Console.WriteLine();
                             menuScreen();
                             break;
                         case "4":
-                            Console.WriteLine("New Sale Info");
                             findSales();
+                            menuScreen();
                             break;
                         case "5":
                             Console.WriteLine("Goodbye!");
@@ -77,10 +83,8 @@ namespace dufflin_munder
             //function that holds the sales message
             void SalesMessage()
             {
-
-                
-                Console.WriteLine($"Sales Agent: {SalesEmployee.SalesAgentSelection}");
-                salesAgent = SalesEmployee.SalesAgentSelection;
+                Console.WriteLine($"\nSales Agent: {SalesEmployee.SalesAgentSelection}");
+                var salesAgent = SalesEmployee.SalesAgentSelection;
                 Console.Write("Client: ");
                 client = Console.ReadLine();
                 checkIfBlank(client);
@@ -98,7 +102,7 @@ namespace dufflin_munder
 
                 SalesEmployee.listOfSales.Add(new NewSales(salesAgent, client, clientId, sale, recurring, timeFrame));
 
-                Console.WriteLine();
+                Console.WriteLine("\nYour sales report was received. Back to the Sales Portal!\n");
                 menuScreen();
             }
 
@@ -112,7 +116,7 @@ namespace dufflin_munder
                     Console.WriteLine("-----------------------------\n");
 
                     //Re-Printing the sales message
-                    Console.WriteLine($"Sales Agent: {SalesEmployee.SalesAgentSelection}");
+                    Console.WriteLine($"\nSales Agent: {SalesEmployee.SalesAgentSelection}");
                     salesAgent = SalesEmployee.SalesAgentSelection;
                     Console.Write("Client: ");
                     client = Console.ReadLine();
@@ -126,7 +130,7 @@ namespace dufflin_munder
                     Console.WriteLine("-----------------------------\n");
 
                     //Re-Printing the sales message
-                    Console.WriteLine($"Sales Agent: {SalesEmployee.SalesAgentSelection}");
+                    Console.WriteLine($"\nSales Agent: {SalesEmployee.SalesAgentSelection}");
                     salesAgent = SalesEmployee.SalesAgentSelection;
                     Console.WriteLine($"Client: {client}");
                     client = client;
@@ -142,7 +146,7 @@ namespace dufflin_munder
                     Console.WriteLine("-----------------------------\n");
 
                     //Re-Printing the sales message
-                    Console.WriteLine($"Sales Agent: {SalesEmployee.SalesAgentSelection}");
+                    Console.WriteLine($"\nSales Agent: {SalesEmployee.SalesAgentSelection}");
                     salesAgent = SalesEmployee.SalesAgentSelection;
                     Console.WriteLine($"Client: {client}");
                     client = client;
@@ -162,7 +166,7 @@ namespace dufflin_munder
                     Console.WriteLine("-----------------------------\n");
 
                     //Re-Printing the sales message
-                    Console.WriteLine($"Sales Agent: {SalesEmployee.SalesAgentSelection}");
+                    Console.WriteLine($"\nSales Agent: {SalesEmployee.SalesAgentSelection}");
                     salesAgent = SalesEmployee.SalesAgentSelection;
                     Console.WriteLine($"Client: {client}");
                     client = client;
@@ -184,17 +188,17 @@ namespace dufflin_munder
 
             void findSales()
             {
-                Console.WriteLine("Enter a Client ID to find the sales report!");
+                Console.Write("\nEnter a Client ID to find the sales report: ");
                 var searchSale = Console.ReadLine();
                 var sale = from s in SalesEmployee.listOfSales
                            where s.ClientID == searchSale
                            select s;
                 foreach (var s in sale) {
-                    Console.WriteLine($"Sales Agent: {s.SalesAgent}");
+                    Console.WriteLine($"\nSales Agent: {s.SalesAgent}");
                     Console.WriteLine($"ClientID: {s.ClientID}");
                     Console.WriteLine($"Sale: ${s.Sale}");
                     Console.WriteLine($"Recurring: {s.Recurring}");
-                    Console.WriteLine($"Time Frame:{s.TimeFrame} ");
+                    Console.WriteLine($"Time Frame:{s.TimeFrame} \n");
                 }
             }
 
