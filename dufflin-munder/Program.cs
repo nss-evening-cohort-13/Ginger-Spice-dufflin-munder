@@ -94,8 +94,8 @@ namespace dufflin_munder
                 Console.WriteLine("Enter a Client ID to find the sales report!");
                 var searchSale = Console.ReadLine();
                 var sale = from s in SalesEmployee.listOfSales
-                              where s.ClientID == searchSale
-                              select s;
+                           where s.ClientID == searchSale
+                           select s;
                 foreach (var s in sale) {
                     Console.WriteLine($"Sales Agent: {s.SalesAgent}");
                     Console.WriteLine($"ClientID: {s.ClientID}");
@@ -103,18 +103,6 @@ namespace dufflin_munder
                     Console.WriteLine($"Recurring: {s.Recurring}");
                     Console.WriteLine($"Time Frame:{s.TimeFrame} ");
                 }
-                //foreach (var salesPerson in SalesEmployee)
-                //{
-                //    var foundSale = salesPerson.ListOfSales.Find(sale => sale.ClientId == searchSale);
-                //    if (foundSale != null)
-                //    {
-                //        Console.WriteLine($"Sales Agent {salesPerson.FirstName} {salesPerson.LastName}");
-                //        Console.WriteLine($"ClientID: {foundSale.ClientId}");
-                //        Console.WriteLine($"Sale: ${foundSale.Sale}");
-                //        Console.WriteLine($"Recurring: {foundSale.Recurring}");
-                //        Console.WriteLine($"Time Frame:{foundSale.TimeFrame} ");
-                //    }    
-                //}
             }
 
             //function that holds the menu screen
