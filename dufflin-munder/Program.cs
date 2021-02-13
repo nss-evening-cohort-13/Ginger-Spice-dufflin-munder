@@ -1,6 +1,7 @@
 using System;
 using dufflin_munder.Employee;
 using dufflin_munder.Sales;
+using System.Linq;
 
 namespace dufflin_munder
 {
@@ -50,6 +51,7 @@ namespace dufflin_munder
                             break;
                         case "4":
                             Console.WriteLine("New Sale Info");
+                            findSales();
                             break;
                         case "5":
                             Console.WriteLine("Goodbye!");
@@ -82,6 +84,30 @@ namespace dufflin_munder
 
                 Console.WriteLine();
                 menuScreen();
+            }
+
+            void findSales()
+            {
+                Console.WriteLine("Enter a Client ID to find the sales report!");
+                var searchSale = int.Parse(Console.ReadLine());
+                var sale = from s in SalesEmployee.listOfSales
+                              where s.Sale == searchSale
+                              select s;
+                foreach (var s in sale) {
+                    Console.WriteLine(s);
+                }
+                //foreach (var salesPerson in SalesEmployee)
+                //{
+                //    var foundSale = salesPerson.ListOfSales.Find(sale => sale.ClientId == searchSale);
+                //    if (foundSale != null)
+                //    {
+                //        Console.WriteLine($"Sales Agent {salesPerson.FirstName} {salesPerson.LastName}");
+                //        Console.WriteLine($"ClientID: {foundSale.ClientId}");
+                //        Console.WriteLine($"Sale: ${foundSale.Sale}");
+                //        Console.WriteLine($"Recurring: {foundSale.Recurring}");
+                //        Console.WriteLine($"Time Frame:{foundSale.TimeFrame} ");
+                //    }    
+                //}
             }
 
             //function that holds the menu screen
