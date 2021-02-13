@@ -9,9 +9,7 @@ namespace dufflin_munder
     {
         static void Main(string[] args)
         {
-            //Generate instance of the class with the list
-            SalesEmployee salesList = new SalesEmployee();
-
+            
             //Calls menu screen
             Console.WriteLine("Welcome to Dufflin/Munder Cardboard Co.\nSales Portal \n");
             menuScreen();
@@ -42,7 +40,12 @@ namespace dufflin_munder
                             SalesMessage();
                             break;
                         case "2":
-                            Console.WriteLine("Generate A Report");
+                            // Print Accountant Employees options to console
+                            AccountantEmployee.AccountantEmployeesOptions();
+                            // Determine user selection of Accountant and set to property
+                            AccountantEmployee.AccountantEmployeeSelection();
+                            // Sales report message being called
+                            NewSales.salesReportMessage();
                             break;
                         case "3":
                             SalesEmployee.AddSalesEmployee();
@@ -80,7 +83,7 @@ namespace dufflin_munder
                 Console.Write("Time Frame: ");
                 var timeFrame = Console.ReadLine();
 
-                salesList.listOfSales.Add(new NewSales(salesAgent, client, clientId, sale, recurring, timeFrame));
+                SalesEmployee.listOfSales.Add(new NewSales(salesAgent, client, clientId, sale, recurring, timeFrame));
 
                 Console.WriteLine();
                 menuScreen();
@@ -89,12 +92,16 @@ namespace dufflin_munder
             void findSales()
             {
                 Console.WriteLine("Enter a Client ID to find the sales report!");
-                var searchSale = int.Parse(Console.ReadLine());
+                var searchSale = Console.ReadLine();
                 var sale = from s in SalesEmployee.listOfSales
-                              where s.Sale == searchSale
+                              where s.ClientID == searchSale
                               select s;
                 foreach (var s in sale) {
-                    Console.WriteLine(s);
+                    Console.WriteLine($"Sales Agent: {s.SalesAgent}");
+                    Console.WriteLine($"ClientID: {s.ClientID}");
+                    Console.WriteLine($"Sale: ${s.Sale}");
+                    Console.WriteLine($"Recurring: {s.Recurring}");
+                    Console.WriteLine($"Time Frame:{s.TimeFrame} ");
                 }
                 //foreach (var salesPerson in SalesEmployee)
                 //{
