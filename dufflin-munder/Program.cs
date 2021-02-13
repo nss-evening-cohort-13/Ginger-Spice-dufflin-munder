@@ -9,7 +9,14 @@ namespace dufflin_munder
     {
         static void Main(string[] args)
         {
-            
+            // add data to list of sales for easier testing
+            SalesEmployee.listOfSales.Add(new NewSales("Dwight Hyte", "Angela Martin", "1", 65, "Monthly", "3 Months"));
+            SalesEmployee.listOfSales.Add(new NewSales("Phyllis Leaf", "Bob Vance", "2", 60, "Monthly", "5 Months"));
+            SalesEmployee.listOfSales.Add(new NewSales("Tim Halbert", "Pam B", "3", 80, "Monthly", "6 Months"));
+            SalesEmployee.listOfSales.Add(new NewSales("Dwight Hyte", "Creed Bratton", "4", 24, "Monthly", "3 Months"));
+            SalesEmployee.listOfSales.Add(new NewSales("Phyllis Leaf", "Stanley Hudson", "5", 36, "Monthly", "5 Months"));
+            SalesEmployee.listOfSales.Add(new NewSales("Tim Halbert", "Mose Schrute", "6", 42, "Monthly", "6 Months"));
+
             //Calls menu screen
             Console.WriteLine("Welcome to Dufflin/Munder Cardboard Co.\nSales Portal \n");
             menuScreen();
@@ -19,10 +26,6 @@ namespace dufflin_munder
 
             //starts the game loop
             menuChoiceLoop();
-
-            SalesEmployee.listOfSales.Add(new NewSales("Dwight Hyte", "Angela Martin", "1234", 24, "Monthly", "3 Months"));
-            SalesEmployee.listOfSales.Add(new NewSales("Phyllis Leaf", "Bob Vance", "5656", 60, "Monthly", "5 Months"));
-            SalesEmployee.listOfSales.Add(new NewSales("Andy Bernard", "Angela Martin", "1234", 80, "Monthly", "6 Months"));
 
             //fucntion that holds the loop
             void menuChoiceLoop()
@@ -36,6 +39,7 @@ namespace dufflin_munder
                             SalesEmployee.SalesEmployeesOptions();
                             // Determine user selection of Sales Agent and set to property
                             SalesEmployee.SalesEmployeeSelection();
+                            // Print Sales Message 
                             SalesMessage();
                             break;
                         case "2":
@@ -48,13 +52,14 @@ namespace dufflin_munder
                             menuScreen();
                             break;
                         case "3":
+                            // Method to add new Sales Employee
                             SalesEmployee.AddSalesEmployee();
                             Console.WriteLine();
                             menuScreen();
                             break;
                         case "4":
-                            Console.WriteLine("New Sale Info");
                             findSales();
+                            menuScreen();
                             break;
                         case "5":
                             Console.WriteLine("Goodbye!");
@@ -70,7 +75,7 @@ namespace dufflin_munder
             //function that holds the sales message
             void SalesMessage()
             {
-            Console.WriteLine($"Sales Agent: {SalesEmployee.SalesAgentSelection}");
+                Console.WriteLine($"\nSales Agent: {SalesEmployee.SalesAgentSelection}");
                 var salesAgent = SalesEmployee.SalesAgentSelection;
                 Console.Write("Client: ");
                 var client = Console.ReadLine();
@@ -85,23 +90,23 @@ namespace dufflin_munder
 
                 SalesEmployee.listOfSales.Add(new NewSales(salesAgent, client, clientId, sale, recurring, timeFrame));
 
-                Console.WriteLine();
+                Console.WriteLine("\nYour sales report was received. Back to the Sales Portal!\n");
                 menuScreen();
             }
 
             void findSales()
             {
-                Console.WriteLine("Enter a Client ID to find the sales report!");
+                Console.Write("\nEnter a Client ID to find the sales report: ");
                 var searchSale = Console.ReadLine();
                 var sale = from s in SalesEmployee.listOfSales
                            where s.ClientID == searchSale
                            select s;
                 foreach (var s in sale) {
-                    Console.WriteLine($"Sales Agent: {s.SalesAgent}");
+                    Console.WriteLine($"\nSales Agent: {s.SalesAgent}");
                     Console.WriteLine($"ClientID: {s.ClientID}");
                     Console.WriteLine($"Sale: ${s.Sale}");
                     Console.WriteLine($"Recurring: {s.Recurring}");
-                    Console.WriteLine($"Time Frame:{s.TimeFrame} ");
+                    Console.WriteLine($"Time Frame:{s.TimeFrame} \n");
                 }
             }
 
