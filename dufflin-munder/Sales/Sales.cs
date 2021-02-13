@@ -63,7 +63,7 @@ namespace dufflin_munder.Sales
                                  select s.Sale;
 
                 // Loop through each sales and add up the total
-                foreach (int sale in salesTotal)
+                foreach (decimal sale in salesTotal)
                     {
                         totalSales = totalSales + sale;
                     }
